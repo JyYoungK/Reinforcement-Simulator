@@ -235,8 +235,8 @@ $(document).ready(function() {
         document.getElementById("part2").style.display = "inline-block";
         document.getElementById("part3").style.display = "inline-block";
         document.getElementById("part4").style.display = "inline-block";
-        setTimeout(function() { reinforcing(); }, 100);
-        // setTimeout(function() { reinforcing(); }, 4000);
+        // setTimeout(function() { reinforcing(); }, 100);
+        setTimeout(function() { reinforcing(); }, 4000);
         $(".reinforcePos").prop('disabled', true);
     });
     
