@@ -1,5 +1,4 @@
 // Initialize Firebase
-
 var firebaseConfig = {
     apiKey: "AIzaSyAIwhUmj3u_h9lZPqSj2LCaPPLycN_L0nM",
     authDomain: "reinforcement-2ee5a.firebaseapp.com",
@@ -10,11 +9,9 @@ var firebaseConfig = {
     appId: "1:271051565224:web:631b5ae61a2f05a8b4ba9d",
     measurementId: "G-3RLHFHE721"
   };
-
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const roofRef = database.ref("users");
-
 
 // Variables
 var plus = 0;
@@ -43,9 +40,8 @@ $(document).ready(function() {
         }
         else if (plus === 4){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 80){
+            // if (gamble < 99){
+            if (gamble < 80){
                 success();
             }
             else{
@@ -54,9 +50,8 @@ $(document).ready(function() {
         }
         else if (plus === 5){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 70){
+            // if (gamble < 99){
+            if (gamble < 70){
                 success();
             }
             else{
@@ -65,9 +60,8 @@ $(document).ready(function() {
         }
         else if (plus === 6){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 60){
+            // if (gamble < 99){
+            if (gamble < 60){
                 success();
             }
             else{
@@ -76,9 +70,8 @@ $(document).ready(function() {
         }
         else if (plus === 7){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 50){
+            // if (gamble < 99){
+            if (gamble < 50){
                 success();
             }
             else{
@@ -87,9 +80,8 @@ $(document).ready(function() {
         }
         else if (plus === 8){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 40){
+            // if (gamble < 99){
+            if (gamble < 40){
                 success();
             }
             else{
@@ -98,9 +90,8 @@ $(document).ready(function() {
         }
         else if (plus === 9){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 30){
+            // if (gamble < 99){
+            if (gamble < 30){
                 success();
             }
             else{
@@ -109,9 +100,8 @@ $(document).ready(function() {
         }
         else if (plus === 10){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 25){
+            // if (gamble < 99){
+            if (gamble < 25){
                 success();
             }
             else{
@@ -120,9 +110,8 @@ $(document).ready(function() {
         }
         else if (plus === 11){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 20){
+            // if (gamble < 99){
+            if (gamble < 20){
                 success();
             }
             else{
@@ -131,9 +120,8 @@ $(document).ready(function() {
         }
         else if (plus === 12){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 19){
+            // if (gamble < 99){
+            if (gamble < 19){
                 success();
             }
             else{
@@ -142,9 +130,8 @@ $(document).ready(function() {
         }
         else if (plus === 13){
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 18){
+            // if (gamble < 99){
+            if (gamble < 18){
                 success();
             }
             else{
@@ -153,9 +140,8 @@ $(document).ready(function() {
         }
         else {
             var gamble = Math.floor(Math.random() * Math.floor(100));
-            if (gamble < 99){
-
-            // if (gamble < 17){
+            // if (gamble < 99){
+            if (gamble < 17){
                 success();
             }
             else{
@@ -164,45 +150,35 @@ $(document).ready(function() {
         }
     }
 
-    function getInfo(){
-        person = prompt("Congratulations! Your weapon has reached +" + plus + " You made it to the Leaderboard! Please enter 7 characters or less and an appropriate name.", "");
-        if (person == null){
-            alert("You must enter your name");
-            getInfo();
-        }
-        else if (person.includes("nagg") || person.includes("n@g") || person.includes("nig") || person.includes("puss") || person.includes("dick") || person.includes("d1c") || person.includes("cock") || person.includes("penis") || person.includes("pen1s") || person.includes("p3nis") || person.includes("boob") || person.includes("b00") || person.includes("jew") || person.includes("j3w") || person.includes("fck") || person.includes("fuck") || person.includes("shit") || person.includes("sh!t") || person.includes("cunt") || person.includes("slut") || person.includes("s!ut") || person.includes("whore") || person.includes("wh0re")){
-            alert("Your names contains inappropriate word. Please try again.");
-            getInfo();
-        }
-        else if (person.length > 7){
-            alert("Your names contains more than 7 letters. Please try again.");
-            getInfo();
-        }
-        else{
-            return person;
-        }
-    }
+    $("#login-button").click(function (event){
+        event.preventDefault();
+        person = document.getElementById("username").value;
+        roofRef.child(person).set({
+            plus: plus
+        });
+        $('.successmsg').fadeOut(500);
+    });
 
     function success(){
         win.play();
         plus++;
         var result = [];
+        //Check if it makes it to the leaderboard
         roofRef.orderByChild("plus").limitToLast(3).on("value", snapshot => {
             snapshot.forEach(function(child){
                 result.push([child.key, child.val().plus]);
             });
         });
-        if (plus > result[0][1]){
-            getInfo();
-            roofRef.child(person).set({
-                plus: plus
-            });
-        };
 
         document.getElementById("upgradeMessage").innerHTML = "UPGRADE SUCCESSFUL!";
         $('#upgradeMessage').removeClass();
         $('#upgradeMessage').addClass("upgradeSuccess");
         document.getElementById("updateMessage").innerHTML = "+"+ plus + "\xa0\xa0 Kaloso's First Weapon ";
+
+        if (plus > result[0][1]){
+            $('.successmsg').fadeIn(500);
+            document.getElementsByClassName("leaderboardmsg")[0].innerHTML = "Congratulations! Your weapon has reached " + plus +"! You can enroll on Leaderboard. Please type an appropriate name.";
+        };
     }
     
     function fail(){
@@ -259,9 +235,8 @@ $(document).ready(function() {
         document.getElementById("part2").style.display = "inline-block";
         document.getElementById("part3").style.display = "inline-block";
         document.getElementById("part4").style.display = "inline-block";
-        // setTimeout(function() { reinforcing(); }, 100);
-        setTimeout(function() { reinforcing(); }, 4000);
-        Leaderboard();
+        setTimeout(function() { reinforcing(); }, 100);
+        // setTimeout(function() { reinforcing(); }, 4000);
         $(".reinforcePos").prop('disabled', true);
     });
     
@@ -271,7 +246,6 @@ $(document).ready(function() {
       document.getElementById("part3").style.display = "none";
       document.getElementById("part4").style.display = "none";
       document.getElementById("modal").style.display = "none";
-
       $("#modal").fadeOut();
       $(".reinforcePos").prop('disabled', false);
     });

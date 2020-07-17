@@ -186,3 +186,10 @@
    align-items: center;
    justify-content: center;
  }
+
+ .cutegif{
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 30px;
+ }
