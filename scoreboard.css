@@ -1,0 +1,75 @@
+.row{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+.col{
+    display:flex;
+    align-items: center;
+    flex-direction: column;    
+}
+
+.firstname{
+    color: goldenrod;
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow:1px 1px red;
+}
+
+.firstpoint{
+    color: goldenrod;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow:1px 1px red;
+}
+
+.secondname{
+    color: silver;
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow:1px 1px blue;
+}
+
+.secondpoint{
+    color: silver;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow:1px 1px blue;
+}
+
+.thirdname{
+    color: brown;
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow:1px 1px burlywood;
+}
+
+.thirdpoint{
+    color: brown;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow:1px 1px burlywood;
+}
+
+@media (max-width: 800px){
+    .second{
+        display:none;
+    }
+    .secondname{
+        display:none;
+    }
+    .secondpoint{
+        display:none;
+    }
+    .third{
+        display:none;
+    }
+    .thirdname{
+        display:none;
+    }
+    .thirdpoint{
+        display:none;
+    }
+  }
